@@ -644,6 +644,9 @@ const intx ObjectAlignmentInBytes = 8;
   product(bool, PrintStubCode, false, DIAGNOSTIC,                           \
           "Print generated stub code")                                      \
                                                                             \
+  develop(bool, DisableSHA, true,                                           \
+          "Force disable SHA CPU flag")                                     \
+                                                                            \
   product(bool, StackTraceInThrowable, true,                                \
           "Collect backtrace in throwable when exception happens")          \
                                                                             \

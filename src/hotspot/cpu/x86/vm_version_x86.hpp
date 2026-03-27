@@ -616,7 +616,7 @@ enum Extended_Family {
        result |= CPU_ADX;
     if (_cpuid_info.sef_cpuid7_ebx.bits.bmi2 != 0)
       result |= CPU_BMI2;
-    if (_cpuid_info.sef_cpuid7_ebx.bits.sha != 0)
+    if (!DisableSHA && _cpuid_info.sef_cpuid7_ebx.bits.sha != 0)
       result |= CPU_SHA;
     if (_cpuid_info.std_cpuid1_ecx.bits.fma != 0)
       result |= CPU_FMA;
