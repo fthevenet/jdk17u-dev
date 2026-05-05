@@ -110,6 +110,7 @@ void StubCodeGenerator::stub_epilog(StubCodeDesc* cdesc) {
 
 StubCodeMark::StubCodeMark(StubCodeGenerator* cgen, const char* group, const char* name) {
   _cgen  = cgen;
+
   _cdesc = new StubCodeDesc(group, name, _cgen->assembler()->pc());
   _cgen->stub_prolog(_cdesc);
   // define the stub's beginning (= entry point) to be after the prolog:
@@ -131,4 +132,5 @@ StubCodeMark::~StubCodeMark() {
   if (JvmtiExport::should_post_dynamic_code_generated()) {
     JvmtiExport::post_dynamic_code_generated(_cdesc->name(), _cdesc->begin(), _cdesc->end());
   }
+  _cgen->assembler()->code()->print();
 }

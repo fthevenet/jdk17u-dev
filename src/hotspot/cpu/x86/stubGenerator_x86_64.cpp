@@ -4388,7 +4388,7 @@ class StubGenerator: public StubCodeGenerator {
 
   address counter_mask_ones_addr() {
     __ align64();
-    StubCodeMark mark(this, "StubRoutines", "counter_mask_addr");
+    StubCodeMark mark(this, "StubRoutines", "counter_mask_ones_addr");
     address start = __ pc();
     for (int i = 0; i < 4; i ++) {
       __ emit_data64(0x0000000000000000, relocInfo::none);
@@ -7798,11 +7798,11 @@ address generate_avx_ghash_processBlocks() {
     if (all) {
       generate_all();
       printf("\nStubGenerator::generate_all\n");
-      code->print_details();
+      code->print() _details();
     } else {
       generate_initial();
-      printf("\nStubGenerator::generate_initial\n");
-      code->print_details();
+     // printf("\nStubGenerator::generate_initial\n");
+     // code->print_details();
     }
   }
 }; // end class declaration
