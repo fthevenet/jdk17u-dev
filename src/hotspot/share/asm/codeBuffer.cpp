@@ -438,6 +438,22 @@ csize_t CodeBuffer::total_content_size() const {
   return size_so_far;
 }
 
+void CodeBuffer::print_details() const {
+  csize_t capacity_so_far = 0;
+  csize_t size_so_far = 0;
+  for (int n = 0; n < (int) SECT_LIMIT; n++) {
+    const CodeSection *cs = code_section(n);
+    if (!cs->is_empty()) {
+      size_so_far = cs->align_at_start(size_so_far);
+      capacity_so_far = cs->align_at_start(capacity_so_far);
+    }
+    capacity_so_far += cs->capacity();
+    size_so_far += cs->size();
+    printf("Section %i:\t%i of %i byte(s)\n", n, cs->size(), cs->capacity());
+  }
+  printf("Total:\t%i of %i byte(s)\n", size_so_far, capacity_so_far);
+}
+
 void CodeBuffer::compute_final_layout(CodeBuffer* dest) const {
   address buf = dest->_total_start;
   csize_t buf_offset = 0;

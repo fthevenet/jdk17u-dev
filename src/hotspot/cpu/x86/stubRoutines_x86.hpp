@@ -34,7 +34,7 @@ static bool returns_to_call_stub(address return_pc) { return return_pc == _call_
 enum platform_dependent_constants {
   code_size1 = 20000 LP64_ONLY(+10000),                         // simply increase if too small
                                                                 // (assembler will crash if too small)
-  code_size2 = 35300 LP64_ONLY(+25000) WINDOWS_ONLY(+1500)      // On Windows, add an extra 1500 bytes to prevent
+  code_size2 = 35300 LP64_ONLY(+25000) WINDOWS_ONLY(+4000)      // On Windows, add an extra 1500 bytes to prevent
                                                                 // overflow if avx512 is present and sha isn't.
 };
 

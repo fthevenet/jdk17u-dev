@@ -7797,8 +7797,12 @@ address generate_avx_ghash_processBlocks() {
   StubGenerator(CodeBuffer* code, bool all) : StubCodeGenerator(code) {
     if (all) {
       generate_all();
+      printf("\nStubGenerator::generate_all\n");
+      code->print_details();
     } else {
       generate_initial();
+      printf("\nStubGenerator::generate_initial\n");
+      code->print_details();
     }
   }
 }; // end class declaration

@@ -608,6 +608,8 @@ class CodeBuffer: public StackObj DEBUG_ONLY(COMMA private Scrubber) {
   // CodeBlob).
   csize_t total_content_size() const;
 
+  void print_details() const;
+
   // Combined offset (relative to start of first section) of given
   // section, as eventually found in the final CodeBlob.
   csize_t total_offset_of(const CodeSection* cs) const;
